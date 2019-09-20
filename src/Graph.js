@@ -1,13 +1,5 @@
+import NodeDoesntExistError from './NodeDoesntExistError';
 import { generateUuid } from './utils/uuid';
-
-export class NodeDoesntExistError extends Error {
-    constructor(key) {
-        super();
-
-        this.name = 'Node doesn\'t exist';
-        this.message = `Node with key ${key} doesn't exist`;
-    }
-}
 
 export default class Graph {
     nodes = [];
@@ -32,7 +24,7 @@ export default class Graph {
     updateNode(key, data) {
         let isNodeExist = false;
 
-        const nodes = this.nodes.map(node => {
+        const nodes = this.nodes.map((node) => {
             if (node.key === key) {
                 isNodeExist = true;
 
@@ -55,7 +47,7 @@ export default class Graph {
     deleteNode(key) {
         let isDeleted = false;
 
-        this.nodes = this.nodes.filter(node => {
+        this.nodes = this.nodes.filter((node) => {
             if (node.key === key) {
                 isDeleted = true;
             }
@@ -69,7 +61,7 @@ export default class Graph {
     }
 
     getNode(key) {
-        const node = this.nodes.find(node => node.key === key);
+        const node = this.nodes.find(item => item.key === key);
 
         if (!node) {
             throw new NodeDoesntExistError(key);

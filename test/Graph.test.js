@@ -1,20 +1,21 @@
-import Graph, { NodeDoesntExistError } from "../src/Graph";
+import Graph from '../src/Graph';
+import { NodeDoesntExistError } from '../src/NodeDoesntExistError';
 
-describe("graph", () => {
+describe('graph', () => {
     let graph = null;
 
     beforeEach(() => {
         graph = new Graph();
     });
 
-    it("should return graph", () => {
+    it('should return graph', () => {
         const { nodes, edges } = graph.get();
 
         expect(nodes).toEqual([]);
         expect(edges).toEqual({});
     });
 
-    it("should add node", () => {
+    it('should add node', () => {
         const key = graph.addNode();
 
         const { nodes, edges } = graph.get();
@@ -23,7 +24,7 @@ describe("graph", () => {
         expect(edges[key]).toHaveLength(0);
     });
 
-    it("should get node", () => {
+    it('should get node', () => {
         const key = graph.addNode();
 
         const node = graph.getNode(key);
@@ -31,13 +32,13 @@ describe("graph", () => {
         expect(node).toEqual({ key });
     });
 
-    it("should throw when no node with key", () => {
+    it('should throw when no node with key', () => {
         const key = 1;
 
         expect(() => graph.getNode(key)).toThrow(new NodeDoesntExistError(key));
     });
 
-    it("should update node", () => {
+    it('should update node', () => {
         const data = { name: 1 };
         const key = graph.addNode();
 
@@ -46,7 +47,7 @@ describe("graph", () => {
         expect(graph.getNode(key)).toEqual({ key, ...data });
     });
 
-    it("should throw when update node which doesn't exist", () => {
+    it('should throw when update node which doesn\'t exist', () => {
         const key = 1;
         const data = { name: 1 };
 
@@ -55,7 +56,7 @@ describe("graph", () => {
         );
     });
 
-    it("should delete node", () => {
+    it('should delete node', () => {
         const key = graph.addNode();
 
         const isDeleted = graph.deleteNode(key);
@@ -67,7 +68,7 @@ describe("graph", () => {
         expect(edges).toEqual({});
     });
 
-    it("should throw when adding edge from node which doesn't exist", () => {
+    it('should throw when adding edge from node which doesn\'t exist', () => {
         const fromKey = 1;
 
         expect(() => graph.addEdge(fromKey, 2)).toThrow(
@@ -75,7 +76,7 @@ describe("graph", () => {
         );
     });
 
-    it("should throw when adding edge to node which doesn't exist", () => {
+    it('should throw when adding edge to node which doesn\'t exist', () => {
         const fromKey = graph.addNode();
         const toKey = 2;
 
@@ -84,7 +85,7 @@ describe("graph", () => {
         );
     });
 
-    it("should add edge", () => {
+    it('should add edge', () => {
         const fromKey = graph.addNode();
         const toKey = graph.addNode();
 
@@ -106,7 +107,7 @@ describe("graph", () => {
         ]);
     });
 
-    it("should throw when delete edge from node which doesn't exist", () => {
+    it('should throw when delete edge from node which doesn\'t exist', () => {
         const fromKey = 1;
 
         expect(() => graph.deleteEdge(fromKey, 2)).toThrow(
@@ -114,7 +115,7 @@ describe("graph", () => {
         );
     });
 
-    it("should throw when delete edge to node which doesn't exist", () => {
+    it('should throw when delete edge to node which doesn\'t exist', () => {
         const fromKey = graph.addNode();
         const toKey = 2;
 
@@ -123,7 +124,7 @@ describe("graph", () => {
         );
     });
 
-    it("should delete edge", () => {
+    it('should delete edge', () => {
         const fromKey = graph.addNode();
         const toKey = graph.addNode();
         graph.addEdge(fromKey, toKey);

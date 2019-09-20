@@ -10,6 +10,34 @@
     "sourceType": "module"
   },
   "parser": "babel-eslint",
-  "extends": "eslint:recommended",
-  "rules": {}
+  "extends": "airbnb-base",
+  "rules": {
+    "linebreak-style": 0,
+    "indent": [
+      2,
+      4,
+      {
+        "SwitchCase": 1,
+        "FunctionExpression": {
+          "parameters": "off"
+        },
+        "FunctionDeclaration": {
+          "parameters": "off"
+        }
+      }
+    ],
+    "comma-dangle": 0,
+    "lines-between-class-members": 0,
+    "arrow-parens": [
+      2,
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ]
+  }
 }
