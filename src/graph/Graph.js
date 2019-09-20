@@ -1,5 +1,5 @@
 import NodeDoesntExistError from './NodeDoesntExistError';
-import { generateUuid } from './utils/uuid';
+import { generateUuid } from '../utils/uuid';
 
 export default class Graph {
     nodes = [];

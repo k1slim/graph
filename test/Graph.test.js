@@ -1,5 +1,5 @@
-import Graph from '../src/Graph';
-import { NodeDoesntExistError } from '../src/NodeDoesntExistError';
+import Graph from '../src/graph/Graph';
+import NodeDoesntExistError from '../src/graph/NodeDoesntExistError';
 
 describe('graph', () => {
     let graph = null;
